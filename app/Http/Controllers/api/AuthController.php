@@ -50,7 +50,7 @@ class AuthController extends Controller
             Cart::create(['user_id' => $user->id]);
         }
 
-        new SignUpEvent($user);
+        event(new SignUpEvent($user));
 
         return $this->successResponse('User created successfully', [
             'user' => new UserResources($user)

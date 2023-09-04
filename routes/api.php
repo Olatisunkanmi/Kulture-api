@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\api\{AuthController, BeatController, GenreController, UserController, ProducerController};
+use App\Http\Controllers\api\{AuthController, BeatController, GenreController, UserController, ProducerController, Cartcontroller};
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckOwnership;
 
