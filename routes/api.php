@@ -1,10 +1,9 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\api\{ArtisteController, AuthController, BeatController, FavouriteController, GenreController, UserController, ProducerController, LicenseController};
+use App\Http\Controllers\api\{ArtisteController, AuthController, BeatController, FavouriteController, GenreController, UserController, ProducerController, LicenseController,Cartcontroller, PaymentController, SubscriptionController,};
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckOwnership;
-use App\Http\Controllers\api\{ArtisteController, AuthController, BeatController, Cartcontroller, FavouriteController, GenreController, PaymentController, ProducerController, SubscriptionController, UserController};
 
 /*
 |--------------------------------------------------------------------------
