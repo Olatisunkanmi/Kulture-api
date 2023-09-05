@@ -137,8 +137,7 @@
                                                                     <small style="font-weight: bold; display: block; margin-bottom: 1rem; font-size: 1rem;">
                                                                         <small style="display: block; margin-bottom: 0.5rem; color: #000000; font-size: .95rem; text-align: center">
                                                                             Hey {{$user->username}},
-                                                                            <p> Welcome to Kulture!</p>
-                                                                            <p> Thank you for signing up. We are excited to have you on board!</p>
+                                                                            <p> An artiste just purchased one of your beats!</p>
                                                                             If you have any questions or need assistance, please feel free to reach out to us.</a>
                                                                         </small>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Events\ProducerEvent;
 use App\Http\Requests\PaymentRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Beat;
@@ -150,6 +151,7 @@ class PaymentController extends Controller
             $producer->save();
             // dd($producer);
         }
+
         return $this->successResponse('Withdrawal initiated successfully', $producer);
     }
 }
