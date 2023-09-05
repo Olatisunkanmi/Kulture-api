@@ -34,9 +34,9 @@ class BeatController extends Controller
         try {
             $data = $request->validated();
 
+           
             $user = Auth()->user();
-
-            if (!$user) {
+ if (!$user) {
                 return $this->errorResponse('User not found');
             }
 
@@ -144,7 +144,7 @@ class BeatController extends Controller
         }
     }
 
-    public function download(string $id): StreamedResponse
+    public function download(string $id): Mixed
     {
         try {
             $beat = Beat::find($id);

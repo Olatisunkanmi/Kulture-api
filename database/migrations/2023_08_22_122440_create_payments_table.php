@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->double('amount', 20,8);
             $table->foreignUlid('user_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('cart_id')->constrained('carts')->cascadeOnDelete();
+            $table->foreignUlid('cart_id')->constrained('carts')->cascadeOnDelete();
             $table->string('reference');
             $table->string('status')->default('pending');
             $table->timestamps();

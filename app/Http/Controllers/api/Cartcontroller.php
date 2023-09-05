@@ -17,50 +17,54 @@ class Cartcontroller extends Controller
     {
         $beat = Beat::findOrFail($request->beat_id);
         $cart = Cart::where('user_id', auth()->user()->id)->first();
-        $items = json_decode($cart->items);
 
-        if  (in_array($beat->id, $items)) {
-            return response()->json([
-                'message' => 'Beat already exists',
-                'data' => new CartResource($cart)
-            ], 
-        );
+    
+        if (in_array($beat->id, $cart->items)) {
+            return response()->json(
+                [
+                    'message' => 'Beat already in cart',
+                    'data' => new CartResource($cart)
+                ], 409
+            );
         }
-        $items = array_merge($items, [$beat->id]);
-        $total_price = $cart->total_price += $beat->price;
+        
+        $cart->items = array_merge($cart->items, [$beat->id]);
 
+        $cart->total_price += $beat->price;
+        
+        $cart->save();
 
-        $cart->update(['items' => json_encode($items), 'total_price' => $total_price]);
 
         return response()->json([
             'message' => 'Beat added successfully',
             'data' => new CartResource($cart)
         ], 201);
-
     }
     public function destroy(Request $request): JsonResponse
     {
         // Find the beat
         $beat = Beat::findOrFail($request->beat_id);
         $cart = Cart::where('user_id', auth()->user()->id)->first();
-        $items = json_decode($cart->items);
 
-        // Delete the beat
-        $items = array_diff($items, [$beat->id]);
+        $cart->total_price -= $beat->price;
+        // Remove beat from cart
+        $cart->items = array_diff($cart->items, [$beat->id]);
 
-        $cart->update(['items' => json_encode($items)]);
-
-        return response()->json(['message' => 'Beat deleted successfully'], 200);
+        // $cart->update(['items' => $items]);
+        $cart->save();
+        return response()->json(['message' => 'Beat removed from cart'], 200);
     }
 
     public function view(Request $request): JsonResponse
     {
         $cart = Cart::where('user_id', auth()->user()->id)->first();
-        $items = json_decode($cart->items);
-        // Get the cart items for the current user
-        $cart = json_decode($cart->items);
-
-        return response()->json(['message' => 'All beats in the cart viewed successfully'], 200);
-
+       
+        return response()->json(
+            [
+                'message' => 'All beats in the cart viewed successfully',
+                'data' =>  new CartResource($cart)
+            ],
+            200
+        );
     }
 }

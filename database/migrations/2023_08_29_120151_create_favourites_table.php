@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-         Schema::create('carts', function (Blueprint $table) {
-            $table->ulid('id')->primary();
-            $table->foreignUlid('user_id')->constrained('users')->cascadeOnDelete();
-            $table->json('items')->nullable();
-            $table->double('total_price')->nullable();
+        Schema::create('favourites', function (Blueprint $table) {
+            $table->foreignUlid('artiste_id')->references('id')->on('artistes')->onDelete('cascade');
+            $table->foreignUlid('beat_id')->references('id')->on('beats')->onDelete('cascade');
+            $table->unique(['artiste_id', 'beat_id']);
             $table->timestamps();
         });
     }
@@ -27,6 +25,5 @@ return new class extends Migration
     public function down(): void
     {
         //
-        Schema::dropIfExists('carts');
     }
 };

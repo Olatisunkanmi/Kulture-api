@@ -19,13 +19,17 @@ class role
     {
         $user = Auth()->user();
 
-
-        if (!$user->tokenCan($requiredRole)) {
+        if($user){
+            if($user->tokenCan($requiredRole)){
+                return $next($request);
+            }
             return response()->json([
                 'message' => 'You are not authorized to access this resource'
             ], Response::HTTP_FORBIDDEN);
         }
+        return response()->json([
+            'message' => 'You are not authorized to access this resource'
+        ], Response::HTTP_FORBIDDEN);
 
-        return $next($request);
     }
 }

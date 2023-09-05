@@ -11,13 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-         Schema::create('carts', function (Blueprint $table) {
+        Schema::create('subscriptions', function (Blueprint $table) {
             $table->ulid('id')->primary();
-            $table->foreignUlid('user_id')->constrained('users')->cascadeOnDelete();
-            $table->json('items')->nullable();
-            $table->double('total_price')->nullable();
+            $table->string('plan');
+            $table->integer('price');
+            $table->integer('upload_limit');
+            $table->integer('subscribers')->default(0);
+
+            // Define foreign keys
             $table->timestamps();
+            
         });
     }
 
@@ -26,7 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
-        Schema::dropIfExists('carts');
+        Schema::dropIfExists('subscriptions');
     }
 };

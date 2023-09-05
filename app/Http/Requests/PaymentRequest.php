@@ -17,16 +17,13 @@ class PaymentRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     * @return array<string>
      */
     public function rules(): array
     {
         return [
             //
-            'amount' => ['required', 'numeric'],
-            'event_id' => ['required', 'exists:events,id'],
-            'ticket_type' => ['required', 'string'],
-            'quantity' => ['required', 'integer']
+            'cart_id' => ['required'],
 
         ];
     }

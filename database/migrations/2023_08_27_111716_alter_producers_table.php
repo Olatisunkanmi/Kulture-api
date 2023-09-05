@@ -12,12 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         //
-         Schema::create('carts', function (Blueprint $table) {
-            $table->ulid('id')->primary();
-            $table->foreignUlid('user_id')->constrained('users')->cascadeOnDelete();
-            $table->json('items')->nullable();
-            $table->double('total_price')->nullable();
-            $table->timestamps();
+        Schema::table('producers', function (Blueprint $table) {
+            $table->string('wallet_id')->nullable();
+            $table->integer('total_downloads')->default(0);
+
         });
     }
 
@@ -26,7 +24,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
-        Schema::dropIfExists('carts');
+        Schema::table('producers', function (Blueprint $table) {
+            $table->dropColumn('total_sales');
+        });
+        
     }
 };

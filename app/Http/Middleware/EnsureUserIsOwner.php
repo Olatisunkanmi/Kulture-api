@@ -15,11 +15,19 @@ class EnsureUserIsOwner
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $model): Response
+    public function handle(Request $request, Closure $next, string $model): Response
     {
         $user = Auth()->user();
+
+        if(!$user){
+            return response()->json([
+                'message' => 'You are not authorized to access this resource'
+            ], Response::HTTP_FORBIDDEN);
+        }
+
         $model = ucfirst($model);
         $model = "App\Models\\$model";
+
 
         $modelId = $request->route()->parameter('id');
 

@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-         Schema::create('carts', function (Blueprint $table) {
-            $table->ulid('id')->primary();
-            $table->foreignUlid('user_id')->constrained('users')->cascadeOnDelete();
-            $table->json('items')->nullable();
-            $table->double('total_price')->nullable();
-            $table->timestamps();
+        Schema::table('artistes', function (Blueprint $table) {
+            $table->integer('total_amount_spent')->default('0');
+
         });
     }
 
@@ -27,6 +23,5 @@ return new class extends Migration
     public function down(): void
     {
         //
-        Schema::dropIfExists('carts');
     }
 };
