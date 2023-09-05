@@ -74,10 +74,10 @@ class FavouriteController extends Controller
             $authId = auth()->id();
             $artiste = Artiste::where('user_id', $authId)->firstOrFail();
             $beat = Beat::findOrFail($id);
-            echo $beat;
+            
     
             $isExist = $artiste->favourites()->where('beat_id', $beat->id)->exists();
-            echo $isExist;
+
             if ($isExist) {
                 $artiste->favourites()->detach($beat->id);
                 $beat->decrement('like_count');

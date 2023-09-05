@@ -30,19 +30,22 @@ class ProducerController extends Controller
     public function show(string $id): JsonResponse
     {
         try {
-            $producer = User::findOrFail($id);
-
-            if ($producer) {
-                $producer = Producer::where('user_id', $id)->first();
-                $producer->increment('profile_views');
-            } else {
+            $user = User::findOrFail($id);
+            
+            $producer = Producer::where('user_id', $user->id)->first();
+    
+            if (!$producer) {
                 return $this->errorResponse('User is not a Producer');
             }
-            
-
-
-            return $this->successResponse('Producer retrieved successfully', new ProducerResources($producer));
+    
+            // Update the producer's view count
+            $producer->increment('profile_views');
+    
+            return $this->successResponse('Producer retrieved successfully', [
+                'data' => new ProducerResources($producer)
+            ]);
         } catch (\Throwable $th) {
+            // return response()->json(['exception' => $th->getMessage()]);
             return $this->errorResponse('User not found');
         }
     }

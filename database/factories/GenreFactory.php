@@ -22,4 +22,3 @@ class GenreFactory extends Factory
         ];
     }
 }
-

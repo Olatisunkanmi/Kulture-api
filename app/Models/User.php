@@ -132,15 +132,4 @@ class User extends Authenticatable
         return $this->hasMany(Referral::class, 'referred_by');
     }
 
-    public function guardName(): mixed
-    {
-        return 'api';
-    }
-
-    // public function favourites(): BelongsToMany
-    // {
-    //     return $this->belongsToMany(Beat::class, 'favourites', 'user_id', 'beat_id')
-    //     ->select('fileUrl', 'imageUrl', 'genre', 'name', 'price', 'id')
-    //     ->withTimestamps();
-    // }
 }

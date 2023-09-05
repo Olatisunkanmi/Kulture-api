@@ -1,15 +1,5 @@
 <?php
 
-namespace App\Http\Controllers\api;
-
-// use App\Models\User;
-// use App\Models\Artiste;
-// use Illuminate\Http\Request;
-// use Illuminate\Http\JsonResponse;
-// use Illuminate\Http\ResponseTrait;
-// use App\Http\Controllers\Controller;
-// use App\Http\Resources\ArtisteResource;
-
 namespace App\Http\Controllers\Api;
 
 use App\Models\Beat;
@@ -57,6 +47,7 @@ class ArtisteController extends Controller
 
             return $this->successResponse('Artiste retrieved successfully', new ArtisteResource($artiste));
         } catch (\Throwable $th) {
+            // return response()->json(['exception' => $th->getMessage()]);
             return $this->errorResponse('User not found');
         }
     }

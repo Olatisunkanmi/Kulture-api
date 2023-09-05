@@ -28,13 +28,10 @@ class ProducerResources extends JsonResource
                 'total_beats' => $this->total_beats,
                 'profile_views' => $this->profile_views,
                 'total_beats_sold' => $this->total_beats_sold,
-                'total_downloads' => $this->total_downloads,
                 'created_at' => $this->created_at,
 
             ],
-            'liked_beats' => $this->likedBeats,
-            'uploaded_beats' => $this->beats,
-            
+            'beats' => $this->beats
 
         ];
     }

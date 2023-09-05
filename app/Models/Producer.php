@@ -48,7 +48,7 @@ class Producer extends User
     public function likedBeats()
     {
         return $this->hasMany(Beat::class)
-            ->whereHas('favourites'); // Assuming you have a favorites relationship in the Beat model
+            ->whereHas('favourites'); 
     }
 
 }

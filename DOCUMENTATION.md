@@ -8,15 +8,23 @@ Welcome to the documentation for the Kulture App API. This document provides inf
   - [REGISTER](#register)
   - [LOGIN](#login)
 - [User](#users)
+
   - [Fetch user by ID](#fetch-user-by-id)
- 
+
 - [TRENDING](#trending)
+
   - [Trending Beats](#trending-beats)
   - [Trending Producers](#trending-producers)
   - [Trending Genres](#trending-genres)
 
 - [Beats](#beats)
-    -   [Fetch Beat by ID](#fetch-beat-by-id)
+
+  - [Fetch Beat by ID](#fetch-beat-by-id)
+  - [Upload Beat](#upload-beat)
+  - [Fetch All Beats](#fetch-all-beats)
+
+- - [Genres](#genres)
+  - [View all Genres](#fetch-all-genres)
 
 ## Authentication<a name="authentication"></a>
 
@@ -238,119 +246,5 @@ Response Body:
       }
     ]
   }
-}
-```
-
-Endpoint: `GET /api/v1/trending/genres`<a name="trending-genres"></a>
-
-Response Body:
-
-```json
-{
-  "status": true,
-  "message": "Trending Genres retrieved successfully",
-  "data": {
-    "current_page": 1,
-    "data": [
-      {
-        "id": "01h8eft6ewbdjkfpynanngtdyg",
-        "attributes": {
-          "name": "Afro Drill",
-          "total_beats": 11,
-          "total_plays": 0,
-          "total_downloads": 0,
-          "total_uploads": 11
-        }
-         "beats": [
-                    {
-                        "id": "01h8ent4d73w9dceqefjgrfdww",
-                        "name": "cross-platform",
-                        "imageUrl": "http://placeimg.com/640/480",
-                        "fileUrl": "https://bria.net",
-                        "price": 772,
-                        "genre": "Afro Drill",
-                        "duration": "00:51",
-                        "size": 0,
-                        "type": "mp3",
-                        "total_sales": 0,
-                        "play_count": 0,
-                        "view_count": 0,
-                        "like_count": 0,
-                        "download_count": 0,
-                        "created_at": "2023-08-22T13:09:13.000000Z",
-                        "updated_at": "2023-08-22T13:09:13.000000Z",
-                        "genre_id": "01h8eft6ewbdjkfpynanngtdyg",
-                        "user_id": "01h8e8nycg52axpj85ty4jcrr1",
-                        "producer_id": "01h8e8nz80gapv1ck2ts0zysr7"
-                    },
-                    {
-                        "id": "01h8entp0dked217hrscx1p54z",
-                        "name": "primary",
-                        "imageUrl": "http://placeimg.com/640/480",
-                        "fileUrl": "https://boyd.net",
-                        "price": 535,
-                        "genre": "Afro Drill",
-                        "duration": "00:51",
-                        "size": 0,
-                        "type": "mp3",
-                        "total_sales": 0,
-                        "play_count": 0,
-                        "view_count": 0,
-                        "like_count": 0,
-                        "download_count": 0,
-                        "created_at": "2023-08-22T13:09:31.000000Z",
-                        "updated_at": "2023-08-22T13:09:31.000000Z",
-                        "genre_id": "01h8eft6ewbdjkfpynanngtdyg",
-                        "user_id": "01h8e8nycg52axpj85ty4jcrr1",
-                        "producer_id": "01h8e8nz80gapv1ck2ts0zysr7"
-                    },
-
-         ]
-      }
-    ]
-  }
-}
-```
-
-### Beats<a name="beats"></a>
-
-Endpoint: `GET /api/v1/beats/:id`<a name="fetch-beat-by-id"></a>
-
-Response Body:
-
-```json
-{
-    "status": true,
-    "message": "Beat retrieved successfully",
-    "data": {
-        "id": "01h8en156xvr9mdg58km3mteae",
-        "attributes": {
-            "name": "virtual",
-            "price": 567,
-            "genre": "Afro Pop",
-            "image_url": "http://placeimg.com/640/480",
-            "file_url": "https://kailyn.org",
-            "duration": "00:51",
-            "size": 0,
-            "type": "mp3",
-            "user_id": "01h8e8nycg52axpj85ty4jcrr1",
-            "total_sales": 0,
-            "plays": 0,
-            "views": 13,
-            "likes": 0,
-            "downloads": 0
-        },
-        "producer": {
-            "id": "01h8e8nz80gapv1ck2ts0zysr7",
-            "user_id": "01h8e8nycg52axpj85ty4jcrr1",
-            "total_revenue": 0,
-            "total_sales": 0,
-            "total_beats": 22,
-            "profile_views": 9,
-            "total_beats_sold": 0,
-            "created_at": "2023-08-22T09:19:45.000000Z",
-            "updated_at": "2023-08-22T14:04:10.000000Z"
-        }
-    }
 }
 ```

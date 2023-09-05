@@ -27,11 +27,13 @@ class Artiste extends User
 
     ];
 
+    
     /**
-     * Get the user that owns the producer.
+     * Get the user that owns the artiste
      * 
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\User, \App\Models\Artiste>
      */
+
 
     public function user(): BelongsTo
     {
@@ -40,7 +42,7 @@ class Artiste extends User
 
     public function favourites(): BelongsToMany
     {
-        return $this->belongsToMany(Beat::class, 'favourites', 'artiste_id', 'beat_id')
+        return $this->belongsToMany(Beat::class, 'favourites')
         ->select('fileUrl', 'imageUrl', 'genre', 'name', 'price', 'id')
         ->withTimestamps();
     }
