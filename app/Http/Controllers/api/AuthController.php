@@ -79,7 +79,7 @@ class AuthController extends Controller
             Cart::create(['user_id' => $user->id, 'items' => []]);
         }
 
-        new SignUpEvent($user);
+        event(new SignUpEvent($user));
 
 
 

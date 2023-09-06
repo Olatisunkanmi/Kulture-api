@@ -30,7 +30,7 @@ class SignUpMail extends Mailable
     {
         return new Envelope(
             subject: 'Welcome to Zojatech Kulture',
-            from: "zojakulture.com"
+            from: "zojakulture@gmail.com"
         );
     }
 
