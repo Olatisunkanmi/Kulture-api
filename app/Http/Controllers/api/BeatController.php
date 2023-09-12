@@ -185,13 +185,18 @@ class BeatController extends Controller
     }
 
     //search 
-    public function searchByTitle(Request $request): JsonResponse
+    // public function searchByTitle(Request $request): JsonResponse
+    // {
+    //     $keyword = $request->input('keyword');
+
+    //     $beats = Beat::where('name', 'like', '%' . $keyword . '%')->get();
+
+    //     return response()->json(['beats' => $beats], 200);
+    // }
+
+    public function search($name)
     {
-        $keyword = $request->input('keyword');
-
-        $beats = Beat::where('title', 'like', '%' . $keyword . '%')->get();
-
-        return response()->json(['beats' => $beats], 200);
+        return Beat::where('name', 'like', '%' . $name . '%')->get();
     }
 
     //filter by price
